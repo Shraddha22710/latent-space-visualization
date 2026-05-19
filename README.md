@@ -43,6 +43,18 @@ The repo opens with the artifacts, because the fastest way to understand these m
 | --- | --- |
 | ![UMAP graph construction intuition](results_digits/digits_umap_graph_construction.png) | ![Digits t-SNE perplexity grid](results_digits/digits_tsne_perplexity_grid.png) |
 
+### PnP/RED Reconstruction Trajectory Gallery
+
+The public gallery below shows representative reconstruction dynamics across forward models, algorithm families, and denoiser profiles. These images are lightweight reproducible demonstrators; the real pretrained denoiser runner loads DRUNet, DnCNN, or DiffUNet-style models from DeepInverse at runtime and does not store weights in the repo.
+
+| Cross-Case Reconstruction Overview | Gaussian Deblur Residual Trajectories |
+| --- | --- |
+| ![PnP RED cross-case matrix](results_pnp_red_gallery/pnp_red_case_matrix.png) | ![Gaussian deblur residual trajectories](results_pnp_red_gallery/gaussian_deblur_drunet_residuals.png) |
+
+| Gaussian Deblur Trajectory Embedding | Super-Resolution Trajectory Embedding |
+| --- | --- |
+| ![Gaussian deblur PnP RED t-SNE trajectory](results_pnp_red_gallery/gaussian_deblur_drunet_trajectory_tsne.png) | ![Super-resolution PnP RED t-SNE trajectory](results_pnp_red_gallery/sr_x2_diffunet_trajectory_tsne.png) |
+
 For the full interactive experience, run a local server and open:
 
 - `index.html` for algorithm animations;
@@ -95,12 +107,14 @@ http://localhost:8000/visual3d.html
 - `results_canonical/`: rings and Lorenz attractor PCA/t-SNE/UMAP results.
 - `results_digits/`: handwritten-digits sweeps, GIFs, metrics, and browser-loadable embeddings.
 - `results_3d/`: exported 3D rotations, projection comparisons, and 3D-to-2D collapse GIFs.
+- `results_pnp_red_gallery/`: PnP/RED reconstruction snapshots, residual trajectories, and trajectory embeddings.
 
 ### Reproducible Scripts
 
 - `scripts/generate_canonical_results.py`
 - `scripts/generate_digits_sensitivity.py`
 - `scripts/generate_3d_artifacts.py`
+- `scripts/generate_pnp_red_gallery.py`
 - `scripts/generate_results.js`
 - `scripts/run_pnp_red_trajectory.py`
 
@@ -133,6 +147,12 @@ Regenerate 3D exports:
 
 ```bash
 python scripts/generate_3d_artifacts.py
+```
+
+Regenerate the public PnP/RED visual gallery:
+
+```bash
+python scripts/generate_pnp_red_gallery.py
 ```
 
 Optional PnP/RED reconstruction trajectory demo:
