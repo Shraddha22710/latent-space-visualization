@@ -61,11 +61,13 @@ http://localhost:8000/visual3d.html
 
 - `results_canonical/`: rings and Lorenz attractor PCA/t-SNE/UMAP results.
 - `results_digits/`: handwritten-digits sweeps, GIFs, metrics, and browser-loadable embeddings.
+- `results_3d/`: exported 3D rotations, projection comparisons, and 3D-to-2D collapse GIFs.
 
 ### Reproducible Scripts
 
 - `scripts/generate_canonical_results.py`
 - `scripts/generate_digits_sensitivity.py`
+- `scripts/generate_3d_artifacts.py`
 - `scripts/generate_results.js`
 
 Install dependencies:
@@ -91,6 +93,12 @@ On Windows, if UMAP/Numba needs a local cache:
 ```powershell
 $env:NUMBA_CACHE_DIR="$PWD\.numba_cache"
 python scripts\generate_digits_sensitivity.py
+```
+
+Regenerate 3D exports:
+
+```bash
+python scripts/generate_3d_artifacts.py
 ```
 
 ## Learning Path
@@ -123,6 +131,16 @@ the object itself
 the shadow we see
 the projection method we choose
 ```
+
+Exported 3D artifacts:
+
+- `results_3d/swiss_3d_rotation.gif`
+- `results_3d/swiss_collapse_to_2d.gif`
+- `results_3d/lorenz_3d_rotation.gif`
+- `results_3d/lorenz_collapse_to_2d.gif`
+- `results_3d/hypercube4d_3d_rotation.gif`
+- `results_3d/hypercube4d_collapse_to_2d.gif`
+- `results_3d/summary.md`
 
 ## Current Handwritten-Digits Results
 
