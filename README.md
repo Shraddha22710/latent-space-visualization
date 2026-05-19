@@ -87,6 +87,7 @@ http://localhost:8000/visual3d.html
 
 - `docs/theory_guide.md`: PCA, SNE, t-SNE, UMAP, TriMap, and PaCMAP theory.
 - `docs/comparison_guide.md`: hyperparameter sensitivity, timing, metrics, and UMAP graph intuition.
+- `docs/pnp_red_trajectory_guide.md`: optional PnP/RED trajectory visualization with DeepInverse denoisers.
 - `latent_space_visualization_tutorial.md`: beginner-friendly tutorial.
 
 ### Generated Results
@@ -101,6 +102,7 @@ http://localhost:8000/visual3d.html
 - `scripts/generate_digits_sensitivity.py`
 - `scripts/generate_3d_artifacts.py`
 - `scripts/generate_results.js`
+- `scripts/run_pnp_red_trajectory.py`
 
 Install dependencies:
 
@@ -132,6 +134,15 @@ Regenerate 3D exports:
 ```bash
 python scripts/generate_3d_artifacts.py
 ```
+
+Optional PnP/RED reconstruction trajectory demo:
+
+```bash
+pip install -r requirements-inverse.txt
+python scripts/run_pnp_red_trajectory.py --task gaussian_deblur --denoiser drunet --iters 2000
+```
+
+Denoiser weights are loaded at runtime through DeepInverse and are not stored in this repository.
 
 ## Learning Path
 

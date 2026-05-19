@@ -1,0 +1,5 @@
+torch
+torchvision
+deepinv[denoisers,physics]
+scikit-image
+tqdm

@@ -9,8 +9,14 @@ venv/
 env/
 results_deepinv_native/
 results_inverse/
+results_pnp_red/
+deepinv_models/
+checkpoints/
+weights/
+*.pt
+*.pth
+*.ckpt
 measurements/
 degradations/
 Set15C/
 public_release/
-
