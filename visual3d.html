@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3D Latent Space Visual Lab</title>
+    <link rel="stylesheet" href="visual3d.css">
+  </head>
+  <body>
+    <header class="top">
+      <div>
+        <h1>3D Latent Space Visual Lab</h1>
+        <p>Orbit manifolds, watch projection paths, and compare original geometry with 2D views.</p>
+      </div>
+      <nav>
+        <a href="index.html">2D Lab</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <aside class="controls">
+        <section>
+          <h2>Scene</h2>
+          <label>Dataset
+            <select id="dataset">
+              <option value="swiss">Swiss roll</option>
+              <option value="lorenz">Lorenz attractor</option>
+              <option value="helix">Helix</option>
+              <option value="rings">Nested rings</option>
+              <option value="hypercube">4D hypercube shadow</option>
+            </select>
+          </label>
+          <label>Projection target
+            <select id="projection">
+              <option value="pca">PCA plane</option>
+              <option value="random">Random 2D plane</option>
+              <option value="radial">Radial unwrap</option>
+            </select>
+          </label>
+        </section>
+
+        <section>
+          <h2>Animation</h2>
+          <label>3D to 2D collapse
+            <input id="collapse" type="range" min="0" max="100" value="0">
+            <output id="collapseLabel">0%</output>
+          </label>
+          <label>Point count
+            <input id="count" type="range" min="120" max="900" step="60" value="420">
+            <output id="countLabel">420</output>
+          </label>
+          <div class="buttons">
+            <button id="play" type="button">Play</button>
+            <button id="resetView" type="button">Reset View</button>
+          </div>
+        </section>
+
+        <section>
+          <h2>Layers</h2>
+          <label class="check"><input id="showGraph" type="checkbox" checked> kNN graph edges</label>
+          <label class="check"><input id="showTrail" type="checkbox" checked> projection trails</label>
+          <label class="check"><input id="autoRotate" type="checkbox" checked> auto rotate</label>
+        </section>
+
+        <section>
+          <h2>Read It</h2>
+          <p id="explain">The left view is the original manifold in 3D or a 3D shadow of a higher-dimensional object. The right view is the current 2D projection target.</p>
+        </section>
+      </aside>
+
+      <section class="stage">
+        <article class="viewport">
+          <div class="viewport-title">
+            <h2>Original / High-Dimensional Shadow</h2>
+            <span id="leftMetric">orbit with drag</span>
+          </div>
+          <canvas id="canvas3d" width="900" height="720"></canvas>
+        </article>
+        <article class="viewport">
+          <div class="viewport-title">
+            <h2>2D Projection Target</h2>
+            <span id="rightMetric">linked colors and neighbors</span>
+          </div>
+          <canvas id="canvas2d" width="900" height="720"></canvas>
+        </article>
+      </section>
+    </main>
+
+    <script src="visual3d.js" defer></script>
+  </body>
+</html>

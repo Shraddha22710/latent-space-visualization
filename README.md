@@ -4,7 +4,7 @@ An interactive, research-friendly learning lab for understanding **PCA, SNE, t-S
 
 This public release focuses on:
 
-- interactive browser animations;
+- interactive browser animations, including 2D and 3D views;
 - paper-grounded theory notes;
 - reproducible PCA/t-SNE/UMAP experiments;
 - generated visualizations and GIFs;
@@ -37,12 +37,19 @@ Then visit:
 http://localhost:8000/dashboard.html
 ```
 
+Open the 3D/higher-dimensional visual lab:
+
+```text
+http://localhost:8000/visual3d.html
+```
+
 ## What Is Included
 
 ### Interactive Tools
 
 - `index.html`: animated PCA, SNE, t-SNE, and UMAP intuition lab.
 - `dashboard.html`: side-by-side comparison dashboard for generated handwritten-digit embeddings.
+- `visual3d.html`: orbitable 3D and higher-dimensional projection lab.
 
 ### Guides
 
@@ -92,10 +99,30 @@ python scripts\generate_digits_sensitivity.py
 2. Try PCA on Swiss roll.
 3. Switch to SNE and t-SNE to see local neighborhoods form.
 4. Switch to UMAP and inspect graph links.
-5. Open `dashboard.html` and compare PCA, t-SNE, and UMAP side by side.
-6. Read `docs/comparison_guide.md`.
-7. Read `docs/theory_guide.md`.
-8. Inspect `results_digits/summary.md` and `results_digits/metrics.csv`.
+5. Open `visual3d.html` and animate 3D-to-2D projection collapse.
+6. Open `dashboard.html` and compare PCA, t-SNE, and UMAP side by side.
+7. Read `docs/comparison_guide.md`.
+8. Read `docs/theory_guide.md`.
+9. Inspect `results_digits/summary.md` and `results_digits/metrics.csv`.
+
+## 3D and Higher-Dimensional Visual Lab
+
+The 3D lab adds:
+
+- orbit and zoom controls;
+- Swiss roll, Lorenz attractor, helix, nested rings, and 4D hypercube shadow;
+- PCA, random, and radial 2D projection targets;
+- k-nearest-neighbor graph edges;
+- projection trails;
+- animated collapse from original geometry to a 2D projection.
+
+This is the best page for understanding the geometric difference between:
+
+```text
+the object itself
+the shadow we see
+the projection method we choose
+```
 
 ## Current Handwritten-Digits Results
 
