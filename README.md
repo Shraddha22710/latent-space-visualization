@@ -17,6 +17,38 @@ The central question:
 How do we turn high-dimensional representations into 2D maps without fooling ourselves?
 ```
 
+## Visual Highlights
+
+The repo opens with the artifacts, because the fastest way to understand these methods is to see what changes.
+
+### 3D Manifold And Projection Animations
+
+| Swiss Roll: 3D Geometry | Swiss Roll: Collapse To 2D |
+| --- | --- |
+| ![Swiss roll rotating in 3D](results_3d/swiss_3d_rotation.gif) | ![Swiss roll collapsing from 3D to 2D](results_3d/swiss_collapse_to_2d.gif) |
+
+| Lorenz Attractor: Dynamical-System Geometry | 4D Hypercube Shadow: Higher-Dimensional Projection |
+| --- | --- |
+| ![Lorenz attractor rotating in 3D](results_3d/lorenz_3d_rotation.gif) | ![4D hypercube shadow collapsing to 2D](results_3d/hypercube4d_collapse_to_2d.gif) |
+
+### Hyperparameter Sensitivity On Handwritten Digits
+
+| t-SNE Perplexity Sweep | UMAP `n_neighbors` Sweep |
+| --- | --- |
+| ![t-SNE perplexity sweep on digits](results_digits/digits_tsne_perplexity_sweep.gif) | ![UMAP neighbor sweep on digits](results_digits/digits_umap_neighbors_sweep.gif) |
+
+### Static Comparison Figures
+
+| UMAP Graph Construction | Digits t-SNE Grid |
+| --- | --- |
+| ![UMAP graph construction intuition](results_digits/digits_umap_graph_construction.png) | ![Digits t-SNE perplexity grid](results_digits/digits_tsne_perplexity_grid.png) |
+
+For the full interactive experience, run a local server and open:
+
+- `index.html` for algorithm animations;
+- `visual3d.html` for 3D and higher-dimensional projection geometry;
+- `dashboard.html` for side-by-side method comparison.
+
 ## Quick Start
 
 Open the interactive animation lab:
