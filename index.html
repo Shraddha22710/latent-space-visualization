@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Latent Space Visualization Lab</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark"></span>
+          <div>
+            <h1>Latent Space Lab</h1>
+            <p>PCA, SNE, t-SNE, and UMAP from simple examples.</p>
+          </div>
+        </div>
+
+        <section class="panel">
+          <h2>Data</h2>
+          <label>
+            Dataset
+            <select id="datasetSelect">
+              <option value="swiss">Swiss roll</option>
+              <option value="helix">3D helix</option>
+              <option value="blobs">Separated blobs</option>
+              <option value="rings">Nested rings</option>
+              <option value="lorenz">Lorenz attractor</option>
+            </select>
+          </label>
+          <label>
+            Points
+            <input id="pointCount" type="range" min="60" max="220" step="20" value="140">
+            <output id="pointCountLabel">140</output>
+          </label>
+          <label>
+            Noise dimensions
+            <input id="noiseDims" type="range" min="0" max="8" step="1" value="3">
+            <output id="noiseDimsLabel">3</output>
+          </label>
+        </section>
+
+        <section class="panel">
+          <h2>Method</h2>
+          <div class="segmented" id="methodTabs">
+            <button type="button" data-method="pca" class="active">PCA</button>
+            <button type="button" data-method="sne">SNE</button>
+            <button type="button" data-method="tsne">t-SNE</button>
+            <button type="button" data-method="umap">UMAP</button>
+          </div>
+
+          <div id="pcaControls" class="method-controls">
+            <label>
+              Projection blend
+              <input id="pcaBlend" type="range" min="0" max="100" value="100">
+              <output id="pcaBlendLabel">100%</output>
+            </label>
+          </div>
+
+          <div id="neighborControls" class="method-controls hidden">
+            <label>
+              Neighborhood
+              <input id="neighborSize" type="range" min="4" max="50" step="1" value="18">
+              <output id="neighborSizeLabel">18</output>
+            </label>
+            <label>
+              Learning rate
+              <input id="learningRate" type="range" min="1" max="90" step="1" value="30">
+              <output id="learningRateLabel">0.30</output>
+            </label>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Run</h2>
+          <div class="button-row">
+            <button id="playButton" type="button">Play</button>
+            <button id="stepButton" type="button">Step</button>
+            <button id="resetButton" type="button">Reset</button>
+          </div>
+          <label class="checkbox-label">
+            <input id="showLinks" type="checkbox" checked>
+            Show neighborhood links
+          </label>
+          <label class="checkbox-label">
+            <input id="showGhost" type="checkbox" checked>
+            Show original 3D shadow
+          </label>
+        </section>
+
+        <section class="panel">
+          <h2>Guided Lessons</h2>
+          <div class="lesson-list" id="lessonList">
+            <button type="button" data-lesson="pcaSwiss">PCA on a curved manifold</button>
+            <button type="button" data-lesson="sneCrowding">SNE crowding problem</button>
+            <button type="button" data-lesson="tsneClusters">t-SNE local clusters</button>
+            <button type="button" data-lesson="umapNeighbors">UMAP neighbor scale</button>
+            <button type="button" data-lesson="lorenzFlow">Lorenz flow states</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Beyond</h2>
+          <div class="beyond-list">
+            <p><strong>TriMap</strong> preserves triplet comparisons: anchor i should stay closer to neighbor j than far point k.</p>
+            <p><strong>PaCMAP</strong> balances near, mid-near, and far pairs to preserve local and broader geometry.</p>
+          </div>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <h2 id="methodTitle">PCA: project onto directions of maximum variance</h2>
+            <p id="methodDescription">PCA finds linear axes that preserve the biggest spread in the data.</p>
+          </div>
+          <div class="stat-strip">
+            <div>
+              <span>Iteration</span>
+              <strong id="iterationStat">0</strong>
+            </div>
+            <div>
+              <span>Stress</span>
+              <strong id="stressStat">0.000</strong>
+            </div>
+            <div>
+              <span>Dimensions</span>
+              <strong id="dimensionStat">6 -> 2</strong>
+            </div>
+          </div>
+        </header>
+
+        <section class="stage">
+          <canvas id="plotCanvas" width="1200" height="760" aria-label="Dimensionality reduction visualization"></canvas>
+          <div id="pointInspector" class="point-inspector hidden"></div>
+        </section>
+
+        <section class="details-panel">
+          <div class="detail-tabs" id="detailTabs">
+            <button type="button" class="active" data-detail="intuition">Intuition</button>
+            <button type="button" data-detail="math">Math</button>
+            <button type="button" data-detail="algorithm">Algorithm</button>
+            <button type="button" data-detail="paper">Paper notes</button>
+          </div>
+          <div id="detailContent" class="detail-content"></div>
+        </section>
+
+        <section class="explain-grid">
+          <article>
+            <h3 id="stepTitle">What is happening?</h3>
+            <p id="stepText">The high-dimensional points are generated from a simple 3D shape with optional extra noise dimensions. The selected method turns them into a 2D map.</p>
+          </article>
+          <article>
+            <h3>Algorithm recipe</h3>
+            <p id="algorithmText">Center the data, find the directions of maximum variance, then project each point onto the top two principal components.</p>
+          </article>
+          <article>
+            <h3>How to read it</h3>
+            <p id="readText">Colors follow the hidden position along the original dataset. In PCA, far directions are meaningful. In SNE, t-SNE, and UMAP, trust neighborhoods more than global axes.</p>
+          </article>
+          <article>
+            <h3>Next domain jump</h3>
+            <p>Replace these toy points with encoder embeddings from images, text, audio, molecules, or tabular records. The visualization layer stays almost the same.</p>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

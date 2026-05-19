@@ -1,0 +1,398 @@
+:root {
+  color-scheme: light;
+  --bg: #f5f7fb;
+  --ink: #17202a;
+  --muted: #5d6875;
+  --line: #d9e0e8;
+  --panel: #ffffff;
+  --accent: #0f766e;
+  --accent-2: #b45309;
+  --accent-3: #4f46e5;
+  --shadow: 0 18px 45px rgba(23, 32, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: #ffffff;
+  border-right: 1px solid var(--line);
+  padding: 22px;
+  overflow-y: auto;
+}
+
+.brand {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 70% 30%, #f59e0b 0 20%, transparent 21%),
+    linear-gradient(135deg, #0f766e, #4f46e5);
+  flex: 0 0 auto;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.brand h1 {
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+.brand p {
+  margin-top: 6px;
+  color: var(--muted);
+  line-height: 1.45;
+  font-size: 13px;
+}
+
+.panel {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.panel h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: #334155;
+  font-size: 14px;
+}
+
+select,
+input[type="range"] {
+  width: 100%;
+}
+
+select {
+  appearance: none;
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  padding: 10px 12px;
+}
+
+output {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.segmented button,
+.button-row button {
+  border: 1px solid var(--line);
+  background: #f8fafc;
+  color: #253244;
+  border-radius: 8px;
+  min-height: 40px;
+  cursor: pointer;
+}
+
+.segmented button.active,
+.button-row button:first-child {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.button-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.lesson-list {
+  display: grid;
+  gap: 8px;
+}
+
+.beyond-list {
+  display: grid;
+  gap: 12px;
+}
+
+.beyond-list p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.beyond-list strong {
+  color: var(--ink);
+}
+
+.lesson-list button {
+  min-height: 38px;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: #f8fafc;
+  color: #253244;
+  border-radius: 8px;
+  padding: 9px 10px;
+  cursor: pointer;
+}
+
+.lesson-list button:hover,
+.segmented button:hover,
+.button-row button:hover {
+  border-color: var(--accent);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.workspace {
+  display: grid;
+  grid-template-rows: auto minmax(420px, 1fr) auto;
+  gap: 18px;
+  padding: 24px;
+  min-width: 0;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.topbar h2 {
+  font-size: clamp(20px, 2vw, 30px);
+  line-height: 1.15;
+}
+
+.topbar p {
+  margin-top: 8px;
+  color: var(--muted);
+  max-width: 780px;
+}
+
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(82px, 1fr));
+  gap: 10px;
+  min-width: 320px;
+}
+
+.stat-strip div {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  box-shadow: var(--shadow);
+}
+
+.stat-strip span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.stat-strip strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 18px;
+}
+
+.stage {
+  min-height: 0;
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background:
+    linear-gradient(#eef3f8 1px, transparent 1px),
+    linear-gradient(90deg, #eef3f8 1px, transparent 1px),
+    #ffffff;
+  background-size: 44px 44px;
+}
+
+.point-inspector {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  max-width: min(340px, calc(100% - 36px));
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 12px 14px;
+  pointer-events: none;
+  color: #334155;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.point-inspector strong {
+  display: block;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.details-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.detail-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+}
+
+.detail-tabs button {
+  border: 0;
+  border-right: 1px solid var(--line);
+  background: #f8fafc;
+  color: #334155;
+  padding: 12px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.detail-tabs button.active {
+  background: #ffffff;
+  color: var(--accent);
+  box-shadow: inset 0 -3px 0 var(--accent);
+}
+
+.detail-content {
+  padding: 16px 18px;
+  color: #334155;
+  line-height: 1.55;
+  font-size: 14px;
+}
+
+.detail-content p + p {
+  margin-top: 10px;
+}
+
+.detail-content code {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 1px 5px;
+}
+
+.detail-content ol {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+
+.detail-content li + li {
+  margin-top: 5px;
+}
+
+.explain-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.explain-grid article {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.explain-grid h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.explain-grid p {
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+@media (max-width: 920px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .topbar,
+  .explain-grid {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .stat-strip {
+    min-width: 0;
+  }
+}

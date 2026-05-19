@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Latent Space Comparison Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+  </head>
+  <body>
+    <header class="dashboard-header">
+      <div>
+        <h1>Embedding Comparison Dashboard</h1>
+        <p>Compare PCA, t-SNE, and UMAP embeddings generated from the handwritten-digits sensitivity pipeline.</p>
+      </div>
+      <a href="index.html">Open Animation Lab</a>
+    </header>
+
+    <main class="dashboard-shell">
+      <aside class="controls">
+        <section>
+          <h2>Compare</h2>
+          <label>
+            Panel A
+            <select id="selectA"></select>
+          </label>
+          <label>
+            Panel B
+            <select id="selectB"></select>
+          </label>
+          <label>
+            Panel C
+            <select id="selectC"></select>
+          </label>
+        </section>
+
+        <section>
+          <h2>Display</h2>
+          <label class="check">
+            <input id="linkHover" type="checkbox" checked>
+            Highlight matching point on hover
+          </label>
+          <label class="check">
+            <input id="showLabels" type="checkbox">
+            Show digit labels on points
+          </label>
+        </section>
+
+        <section>
+          <h2>Guide</h2>
+          <p>PCA is the fast linear baseline. t-SNE perplexity changes effective neighborhood size. UMAP <code>n_neighbors</code> changes graph scale, while <code>min_dist</code> changes cluster packing.</p>
+        </section>
+      </aside>
+
+      <section class="comparison-area">
+        <div class="plot-grid">
+          <article class="plot-card">
+            <div class="plot-title">
+              <h2 id="titleA">Panel A</h2>
+              <span id="metricA"></span>
+            </div>
+            <canvas id="canvasA" width="720" height="560"></canvas>
+          </article>
+          <article class="plot-card">
+            <div class="plot-title">
+              <h2 id="titleB">Panel B</h2>
+              <span id="metricB"></span>
+            </div>
+            <canvas id="canvasB" width="720" height="560"></canvas>
+          </article>
+          <article class="plot-card">
+            <div class="plot-title">
+              <h2 id="titleC">Panel C</h2>
+              <span id="metricC"></span>
+            </div>
+            <canvas id="canvasC" width="720" height="560"></canvas>
+          </article>
+        </div>
+
+        <section class="metrics-table">
+          <h2>All Generated Embeddings</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Embedding</th>
+                <th>Method</th>
+                <th>Parameter</th>
+                <th>Seconds</th>
+                <th>kNN overlap</th>
+                <th>Trustworthiness</th>
+              </tr>
+            </thead>
+            <tbody id="metricsBody"></tbody>
+          </table>
+        </section>
+      </section>
+    </main>
+
+    <div id="tooltip" class="tooltip hidden"></div>
+    <script src="dashboard.js" defer></script>
+  </body>
+</html>
