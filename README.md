@@ -1,21 +1,15 @@
 # Latent Space Visualization Lab
 
-An interactive, research-friendly learning lab for understanding **PCA, SNE, t-SNE, UMAP, and modern latent-space visualization**.
+A friendly guide for understanding **PCA, SNE, t-SNE, UMAP, and modern latent-space visualization**.
 
-This public release focuses on:
+This repo focuses on:
 
-- interactive browser animations, including 2D and 3D views;
-- paper-grounded theory notes;
+- interactive animations, including 2D and 3D views;
 - reproducible PCA/t-SNE/UMAP experiments;
 - generated visualizations and GIFs;
 - hyperparameter sensitivity on handwritten digits;
 - examples from toy geometry, nonlinear dynamics, and handwritten-digit embeddings.
 
-The central question:
-
-```text
-How do we turn high-dimensional representations into 2D maps without fooling ourselves?
-```
 
 ## Visual Highlights
 
@@ -45,7 +39,7 @@ The repo opens with the artifacts, because the fastest way to understand these m
 
 ### PnP/RED Reconstruction Trajectory Gallery
 
-The public gallery below shows representative reconstruction dynamics across forward models, algorithm families, and denoiser profiles. These images are lightweight reproducible demonstrators; the real pretrained denoiser runner loads DRUNet, DnCNN, or DiffUNet-style models from DeepInverse at runtime and does not store weights in the repo.
+The gallery below shows representative reconstruction dynamics across forward models, algorithm families, and denoiser profiles. These images are lightweight reproducible demonstrators; the pretrained denoiser runner loads DRUNet, DnCNN, or DiffUNet-style models from DeepInverse at runtime and does not store weights in the repo.
 
 | Cross-Case Reconstruction Overview | Gaussian Deblur Residual Trajectories |
 | --- | --- |
@@ -231,9 +225,7 @@ Exported 3D artifacts:
 - Treat t-SNE/UMAP axes as arbitrary.
 - Treat beautiful maps as hypothesis generators, not proof.
 
-## Private Research Extensions
 
-Some heavier research modules are intentionally not included in this public release. The public repo is designed to be useful, reproducible, and educational while leaving room for private experimental extensions.
 
 ## References
 
